@@ -1,67 +1,87 @@
 variables:
-  APACHE_PORTS:
+  LAMP_GROUP_MAXIMUM:
+    default: 1
+    description: Minimum number of instances the autoscale group will launch
+    overrides:
+    required: true
+    type: number
+  LAMP_GROUP_MINIMUM:
+    default: 1
+    description: Maximum number of instances the autoscale group will launch
+    overrides:
+    required: true
+    type: number
+  LAMP_INGRESS_CIDRS:
+    default: 
+        - 0.0.0.0/0
+    description: null
+    overrides: null
+    required: true
+    type: arra
+  LAMP_INGRESS_CIDR_PORTS:
     default:
-      - 80
-      - 8080
-  VPC_NAME:
-    default:
+       - 8080
+       - 80
+       - 443
+       - 22
     description:
     overrides:
     required: true
-    type:
-  BACKUP_BUCKET:
+    type: array
+  LAMP_INGRESS_GROUP_PORTS:
     default:
+       - 8080
+       - 80
+       - 443
     description:
     overrides:
     required: true
-    type:
-  YUM_REPO_BUCKET:
+    type: array
+  LAMP_KEYPAIR:
     default:
     description:
-    overrides:
-    required: true
-    type:
-  BACKUP_BUCKET_REGION:
-    default:
-    description:
-    overrides:
-    required: true
-    type:
-  LAMP_BACKUP_CRON:
-    default: "0 * * * *"
-    description: default to backing up every hour on the hour
     overrides:
     required: true
     type:
   LAMP_NAME:
-    default: lamp
-    description: the name of the LAMP server
-    required: true
-  LAMP_AMI:
-    default: ami-76817c1e
-    description: Amazon Linux AMI 2014.03.2 (HVM)
+    default: LAMP
+    description:
     overrides:
     required: true
+    type:
   LAMP_SIZE:
-    default: t2.small
-    description: the size of the server to launch
-    required: true
-  LAMP_KEYPAIR:
-    description: the name of the keypair to launch jenkins with
-    required: true
-  PRIVATE_SUBNET_NAME:
-    default:
+    default: t2.micro
     description:
     overrides:
     required: true
     type:
-  REGION:
-    default:
+  VPC_NAME:
+    default: test-vpc
     description:
     overrides:
     required: true
+    type: string
+  YUM_REPO_BUCKET:
+    default:
+    description:
+    overrides:
+    required: false
     type:
-  ENV:
-    default: dev
-    description: just a way to namespace the backups
+  VPC_CIDR:
+    default: 10.11.0.0/16
+    description: The CIDR to match to locate the VPC that this server is to be created in
+    overrides: null
     required: true
+    type: string
+  PUBLIC_ROUTE_NAME:
+    default: test-public-route
+    description: null
+    overrides: null
+    required: true
+    type: string
+  PUBLIC_SUBNET_NAME:
+    default: test-public-subnet
+    description: The name of the public subnet you want to create your server in
+    overrides: null
+    required: true
+    type: string
