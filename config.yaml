@@ -50,6 +50,7 @@ variables:
     required: true
     type:
   LAMP_SIZE:
+<<<<<<< HEAD
     default: t2.micro
     description:
     overrides:
@@ -57,6 +58,22 @@ variables:
     type:
   VPC_NAME:
     default: test-vpc
+=======
+    default: t2.small
+    description: the size of the server to launch
+    required: true
+  LAMP_KEYPAIR:
+    description: the name of the keypair to launch jenkins with
+    required: true
+  PRIVATE_SUBNET_NAME:
+    default: test-public-subnet
+    description: The name of the public subnet you want to create your server in
+    overrides: null
+    required: true
+    type: string
+  REGION:
+    default:
+>>>>>>> f08daef46c86c0607cb4591791a808963b94fc11
     description:
     overrides:
     required: true
@@ -67,8 +84,17 @@ variables:
     overrides:
     required: false
     type:
+<<<<<<< HEAD
   VPC_CIDR:
     default: 10.11.0.0/16
+=======
+  ENV:
+    default: dev
+    description: just a way to namespace the backups
+    required: true
+  VPC_CIDR: 
+    default: 10.0.0.0/16
+>>>>>>> f08daef46c86c0607cb4591791a808963b94fc11
     description: The CIDR to match to locate the VPC that this server is to be created in
     overrides: null
     required: true
@@ -78,10 +104,13 @@ variables:
     description: null
     overrides: null
     required: true
+<<<<<<< HEAD
     type: string
   PUBLIC_SUBNET_NAME:
     default: test-public-subnet
     description: The name of the public subnet you want to create your server in
     overrides: null
     required: true
+=======
+>>>>>>> f08daef46c86c0607cb4591791a808963b94fc11
     type: string
